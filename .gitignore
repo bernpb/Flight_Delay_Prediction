@@ -1,3 +1,4 @@
 # Ignore all csv files
 flights.csv
 passengers.csv
+config.py
