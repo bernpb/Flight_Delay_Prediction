@@ -2,3 +2,10 @@
 flights.csv
 passengers.csv
 config.py
+config-checkpoint.py
+.ipynb_checkpoints
+.ipynb_checkpoints/config-checkpoint.py
+WeatherEvents_Jan2016-Dec2020.csv
+flights_weather.csv
+components20.csv
+clean_df.csv
