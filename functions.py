@@ -1,3 +1,14 @@
+import pandas as pd
+# Metrics
+from sklearn.metrics import r2_score
+from sklearn.metrics import mean_absolute_error
+from sklearn.metrics import mean_squared_error
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import f1_score
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
+from sklearn.metrics import confusion_matrix
+
 def statebreaker(city_state):
     """
     Params:  
@@ -85,4 +96,64 @@ def time_of_day(hour):
         return'Afternoon'
     elif 18 <= hour:
         return 'Evening'
+
+
+def dummify(df, column):
+    
+    temp_list = list(df[column])
+    temp_df = pd.DataFrame(temp_list, columns = [column])
+    dummy_df = pd.get_dummies(temp_df, columns = [column], prefix = ['type_is'])
+    return dummy_df
+
+
+def binary_classifier_metrics(y_test, y_pred):
+    
+    """
+    Quick function to return metrics for binary classification models.
+    
+    Requires the imports of the functions below.
+    """
+    
+    print('Accuracy: ', accuracy_score(y_test, y_pred))
+    print('F1 score: ', f1_score(y_test, y_pred))
+    print('Precision score: ', precision_score(y_test, y_pred))
+    print('Recall score: ', recall_score(y_test, y_pred))
+    print('Confusion Matrix: \n', confusion_matrix(y_test, y_pred))
+
+    
+def multiclassifier_metrics(y_test, y_pred):
+    
+    """
+    Quick function to return metrics for multi-classification models.
+    
+    Requires the imports of the functions below.
+    """
+    
+    print('Accuracy: ', accuracy_score(y_test, y_pred))
+    print('F1 score: ', f1_score(y_test, y_pred,
+                                average = 'micro'))
+    print('Precision score: ', precision_score(y_test, y_pred,
+                                              average = 'micro'))
+    print('Recall score: ', recall_score(y_test, y_pred,
+                                        average = 'micro'))
+    print('Confusion Matrix: \n', confusion_matrix(y_test, y_pred))
+    
+
+def regression_metrics(y_test, y_pred):
+    print('R2 Score: ', r2_score(y_test, y_pred))
+    print('Mean Absolute Error: ', mean_absolute_error(y_test, y_pred))
+    print('Mean Squared Error: ', mean_squared_error(y_test, y_pred))
+    
+    
+def grid_search_results(grid_search, X, y):
+    """
+    Returns grid search results in a readable format
+    """
+    
+    print('Best Score: ',grid_search.score(X, y, ))
+    print('Best Params: ', grid_search.best_params_)
+
+def grid_search_results(grid_search, X, y):
+    print('Best Score: ',grid_search.score(X, y, ))
+    print('Best Params: ', grid_search.best_params_)
     
