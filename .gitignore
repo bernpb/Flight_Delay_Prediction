@@ -15,3 +15,6 @@ practice.ipynb
 post_explore.csv
 multiclass_data.csv
 regression_data.csv
+flights_test_weather.csv
+pre_predictions.csv
+test_data_prepped.csv
